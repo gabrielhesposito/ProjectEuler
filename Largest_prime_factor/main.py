@@ -12,13 +12,21 @@ def get_inputs ():
 
 def calc_lpf():
     lpf = get_inputs()
-    lpf_stack = [ lpf ]
+    lpforg = lpf
+    lpf_stack = []
+    topprime=""
     for i in range( lpf , 0 , -1 ):
-       if ( ( i % i+1 )  > 0 ):
-         print i
-         continue
-       else:
-         continue
+      	 #base case should end here
+       for prime in range ( i, 0 , -1 ):
+         if ( prime == 1  ):
+           --lpforg
+           lpf = lpforg
+           lpf_stack.append(i)
+           break 
+         if ( ( prime % (prime -1) ) ==  0 ):
+           #not prime
+           continue
+    print lpf_stack
 
 
 
