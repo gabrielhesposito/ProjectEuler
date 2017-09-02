@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 #python 2.7
 import argparse
+import time
 
 def get_inputs ():
     arguments=argparse.ArgumentParser(description='Largest Prime to what level?.')
@@ -10,25 +11,22 @@ def get_inputs ():
     return input.lpf
 
 
-def calc_lpf():
+def calc_lpf ():
     lpf = get_inputs()
     lpf_stack = []
     topprime=""
-    for i in range( lpf , 0 , -1 ):
-       #print i   
-      	 #base case should end here
-       for prime in range ( i, 0 , -1 ):
-         #print prime
-         if ( ( i % prime ) == 0 ):
+    for i in range( lpf , 1 , -1 ):
+       print "This is the prime evaluated : " +  str(i)
+       for prime in range ( i, 1, -1 ):
+         print "This is the number evaluated : " + str(prime)
+         if ( ( i % prime ) == 0 ) and ( (i / prime) > 1 ) :
            #not prime
+           time.sleep (2)
            break
-         if ( prime == 1 ):
-           # find prime
-           print i
+         else:
+           print "prime found print i" + str(i)
            lpf_stack.append(i)
-           break 
     print lpf_stack
-
 
 
 calc_lpf() 
