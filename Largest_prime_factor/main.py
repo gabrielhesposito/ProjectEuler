@@ -11,9 +11,29 @@ def get_inputs ():
     return input.lpf
 
 
+def test_lpf ():
+    index=-1
+    for element in lpf_stack:
+        index=index-1
+        if ( element * lpf_stack[index]  == lpf ):
+           lpf_list.append(element, lpf_stack[index])
+           ## one above element
+           lpf_stack.pop(index)
+           ## elements position
+           lpf_stack.pop(index+1)
+           #for element in lpf_list
+
+        
+    
+
 def calc_lpf ():
     lpf = get_inputs()
+    #place primes here
     lpf_stack = []
+
+    #place two eles here
+    lpf_list = []
+
     topprime=""
     for isprime in range( lpf , 1 , -1 ):
        ########
@@ -25,22 +45,25 @@ def calc_lpf ():
          #print "this is prime: " + str(prime)
 
          ##no numbs greater than, no numbs equal too
-         if (prime < isprime) :
-           if (   isprime % prime  == 0  ):
-           #######
-	   #not prime number is divisible
-           #######
-           #time.sleep (2)
+         if ( prime < isprime ) :
+           if ( isprime % prime  == 0 ):
+             #######
+	     #not prime number is divisible
+             #######
+             #time.sleep (2)
              print "break:  this is isprime: " + str(isprime) + "this is prime: " + str(prime)
              break
            
            print "postbreak: this is isprime: " + str(isprime) + "this is prime: " + str(prime)
-           if (  (prime - 1)  == 1  ):
+
+           if (  ( prime - 1 )  == 1  ):
              print "prime found print " + str(prime)
              lpf_stack.append(isprime)
 
-    for element in lpf_stack: 
+    for element in lpf_list: 
          print element
+
+
 
 
 calc_lpf() 
